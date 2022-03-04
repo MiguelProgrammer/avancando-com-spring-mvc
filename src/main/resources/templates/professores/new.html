@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th=" http://www.thymeleaf.org ">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+
+<title>Inserir Professor</title>
+</head>
+<body style="background-color: whitesmoke">
+
+	<div class="container">
+		<div class="row ">
+			<h3 class="shadow-sm p-3 mb-5 bg-body rounded">Inserir Novo
+				Professor</h3>
+		</div>
+		<div class="row justify-content-center">
+			<div
+				class="row justify-content-center col-sm-8 shadow-sm p-3 mb-5 bg-body rounded">
+				<div class="row align-items-start">
+					<div class="col"></div>
+					<div class="col-10">
+						<form action="/professores" method="POST">
+							<div class="mb-3">
+								<label for="nomeId" class="form-label"> Nome </label> 
+								<input type="text" class="form-control" id="nomeId" name="nome">
+								<div class="form-text">insira o nome completo sem
+									abreviações</div>
+							</div>
+
+							<br>
+
+							<div class="mb-3">
+								<label for="salarioId" class="form-label"> Salário </label> 
+								<input type="text" class="form-control" id="salarioId" name="salario">
+								<div class="form-text">insira o salário do professor</div>
+							</div>
+
+							<br>
+
+							<div class="mb-3">
+								<label for="statusId" class="form-label"> Status Professor </label> 
+									<select class="form-select" name="statusProfessor">
+									<option th:each="status : ${T(br.com.estudandoemcasa.gerenciador.models.StatusProfessor).values}" 
+        								th:value="${status}" th:text="${status}"></option>
+									</select>
+								<div class="form-text">selecione o status do professor</div>
+							</div>
+							<hr>
+
+
+							<div class="btn-group" role="group"
+								aria-label="Basic checkbox toggle button group">
+								<button type="submit"
+									class=" btn btn-outline-success">Cadastrar</button>
+								<a href="/professores"
+									class=" btn btn-outline-primary">Retornar</a>
+							</div>
+						</form>
+					</div>
+					<div class="col"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+</body>
+</html>
