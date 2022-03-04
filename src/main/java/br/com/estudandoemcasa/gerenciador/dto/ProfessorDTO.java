@@ -2,6 +2,10 @@ package br.com.estudandoemcasa.gerenciador.dto;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import br.com.estudandoemcasa.gerenciador.models.Professor;
 import br.com.estudandoemcasa.gerenciador.models.StatusProfessor;
 import lombok.Getter;
@@ -16,8 +20,14 @@ import lombok.ToString;
 @ToString
 public class ProfessorDTO {
 
+	@NotBlank
+	@NotNull
 	private String nome;
+	
+	@NotNull
+	@DecimalMin(value="0.0")
 	private BigDecimal salario;
+	
 	private StatusProfessor statusProfessor;
 	
 	public Professor toProfessor() {
